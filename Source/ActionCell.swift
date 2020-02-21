@@ -47,7 +47,7 @@ open class ActionCell: UICollectionViewCell, SeparatorCellType {
     }
 
     open func setup(_ title: String?, detail: String?, image: UIImage?) {
-        actionTitleLabel?.text = title
+        actionTitleLabel?.text = title?.capitalizingFirstLetter()
         actionDetailLabel?.text = detail
         actionImageView?.image = image
 
@@ -62,5 +62,15 @@ open class ActionCell: UICollectionViewCell, SeparatorCellType {
     
     open func hideSeparator() {
         separatorView?.alpha = 0.0
+    }
+}
+//MARK:- uniform appearance for the options in the filtermenu
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }
