@@ -748,7 +748,8 @@ open class DynamicsActionController<ActionViewType: UICollectionViewCell, Action
                 self._dynamicSectionIndex = index
                 self.collectionView.performBatchUpdates({
                     if indexPaths.count > 0 {
-                        self.collectionView.insertItems(at: indexPaths)
+                        self.collectionView.reloadData()
+                        //self.collectionView.insertItems(at: indexPaths) // crash in ios 11
                     }
                 }, completion: nil)
             })
